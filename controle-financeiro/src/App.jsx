@@ -1,56 +1,36 @@
-
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
 import { useState, useEffect } from 'react';
-import Formulario from './formulario';
+import ExpenseForm from './components/ExpenseForm';
+import ExpenseList from './components/ExpenseList';
 
 function App() {
-  const [despesas, setDespesas] = useState([]);
+  const [expenses, setExpenses] = useState([]);
 
-  // Carrega despesas do localStorage ao iniciar
+  // Carregar do localStorage ao iniciar
   useEffect(() => {
-    const despesasSalvas = localStorage.getItem('despesas');
-    if (despesasSalvas) {
-      setDespesas(JSON.parse(despesasSalvas));
+    const saved = localStorage.getItem('despesas');
+    if (saved) {
+      setExpenses(JSON.parse(saved));
     }
   }, []);
 
-  // Salva as despesas no localStorage sempre que mudam
+  // Salvar no localStorage quando mudar
   useEffect(() => {
-    localStorage.setItem('despesas', JSON.stringify(despesas));
-  }, [despesas]);
+    localStorage.setItem('despesas', JSON.stringify(expenses));
+  }, [expenses]);
 
-  // Função para adicionar uma nova despesa
-  const adicionarDespesa = (despesa) => {
-    setDespesas([...despesas, despesa]);
+  const addExpense = (novaDespesa) => {
+    setExpenses([...expenses, novaDespesa]);
   };
 
-  // Função para remover despesa (opcional)
-  const removerDespesa = (id) => {
-    const despesasFiltradas = despesas.filter((d) => d.id !== id);
-    setDespesas(despesasFiltradas);
+  const deleteExpense = (id) => {
+    setExpenses(expenses.filter(exp => exp.id !== id));
   };
 
   return (
-    <div style={{ padding: '20px', maxWidth: '600px', margin: '0 auto' }}>
-      <h1>Controle Financeiro Pessoal</h1>
-
-      <FormularioDespesa aoSalvar={adicionarDespesa} />
-
-      <h2>Despesas cadastradas:</h2>
-      <ul>
-        {despesas.length === 0 && <li>Nenhuma despesa cadastrada</li>}
-        {despesas.map((d) => (
-          <li key={d.id}>
-            {d.nome} | {d.categoria} | {d.tipo} | R$ {d.valor.toFixed(2)} | {d.data}
-            <button onClick={() => removerDespesa(d.id)} style={{ marginLeft: '10px' }}>
-              Excluir
-            </button>
-          </li>
-        ))}
-      </ul>
+    <div>
+      <h1>Controle de Gastos</h1>
+      <ExpenseForm onAdd={addExpense} />
+      <ExpenseList expenses={expenses} onDelete={deleteExpense} />
     </div>
   );
 }
