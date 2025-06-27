@@ -57,7 +57,7 @@ body {
 
 h2{
   text-align: center;
-  color: #29001b;
+  color: #ff00aa;
 }
 h1{
   text-align: center;
@@ -75,7 +75,6 @@ form {
   margin-bottom: 20px;
   max-width: 300px;
   margin: 0 auto;
-  padding: 20px;
 }
 
 form input,
@@ -87,11 +86,13 @@ form button {
   padding: 10px;
   margin-bottom: 12px;
   border-radius: 8px;
-  border: 1px solid #dcdde1;
+  border: 1.8px solid #dcdde1;
   font-size: 1rem;
 }
 
 form button {
+  display: inline-block;
+  margin: 3px;
   width: 80px;
   background-color:#ff009d;
   color: white;
