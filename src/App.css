@@ -43,7 +43,7 @@
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #36002b;
+  background-color: #ffc5f3;
   margin: 0;
   padding: 0;
 }
@@ -52,6 +52,7 @@ body {
   max-width: 400px;
   margin: 0 auto;
   padding: 20px;
+
 }
 
 h2{
@@ -60,11 +61,11 @@ h2{
 }
 h1{
   text-align: center;
-  color: #ffedf9;
+  color: #000000;
 }
 
 p{
-  color: white;
+  color: rgb(0, 0, 0);
 }
 
 form {
