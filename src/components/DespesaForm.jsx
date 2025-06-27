@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
 import { salvarDespesas, carregarDespesas } from '../utilarios/localStorage';
 
-function ExpenseForm({ onSave, despesaEditando, limparEdicao }) {
+function DespesaForm({ onSave, despesaEditando, limparEdicao }) {
   const [nome, setNome] = useState('');
   const [valor, setValor] = useState('');
   const [data, setData] = useState('');
   const [categoria, setCategoria] = useState('');
   const [tipo, setTipo] = useState('fixa');
 
+  // Preenche os campos ao editar
   useEffect(() => {
     if (despesaEditando) {
       setNome(despesaEditando.nome);
@@ -15,14 +16,26 @@ function ExpenseForm({ onSave, despesaEditando, limparEdicao }) {
       setData(despesaEditando.data);
       setCategoria(despesaEditando.categoria);
       setTipo(despesaEditando.tipo);
+    } else {
+      // Limpa o formulário ao abrir para nova despesa
+      setNome('');
+      setValor('');
+      setData('');
+      setCategoria('');
+      setTipo('fixa');
     }
   }, [despesaEditando]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    if (!nome || !valor || !data || !categoria || !tipo) {
+      alert('Preencha todos os campos!');
+      return;
+    }
+
     const novaDespesa = {
-      id: despesaEditando ? despesaEditando.id : Date.now(), //cria um id unico com Date.now()
+      id: despesaEditando ? despesaEditando.id : Date.now(),
       nome,
       valor: parseFloat(valor),
       data,
@@ -30,64 +43,62 @@ function ExpenseForm({ onSave, despesaEditando, limparEdicao }) {
       tipo,
     };
 
-    const despesas = carregarDespesas();
-    let novaLista;
+    const despesasAtuais = carregarDespesas();
 
-    if (despesaEditando) {
-      novaLista = despesas.map((d) => (d.id === despesaEditando.id ? novaDespesa : d));
-    } else {
-      novaLista = [...despesas, novaDespesa];
-    }
+    const despesasAtualizadas = despesaEditando
+      ? despesasAtuais.map((d) => (d.id === novaDespesa.id ? novaDespesa : d))
+      : [...despesasAtuais, novaDespesa];
 
-    salvarDespesas(novaLista);
-    onSave(novaLista);
-
-    // limpar campos
-    setNome('');
-    setValor('');
-    setData('');
-    setCategoria('');
-    setTipo('fixa');
-    limparEdicao();
+    salvarDespesas(despesasAtualizadas);
+    onSave(despesasAtualizadas);
+    limparEdicao(); // Fecha o modal
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2>{despesaEditando ? 'Editar Despesa' : 'Adicionar Despesa'}</h2>
+      <h2>{despesaEditando ? 'Editar Despesa' : 'Nova Despesa'}</h2>
+
       <input
         type="text"
-        placeholder="Nome"
+        placeholder="Nome da despesa"
         value={nome}
         onChange={(e) => setNome(e.target.value)}
-        required
       />
+
       <input
         type="number"
         placeholder="Valor"
         value={valor}
         onChange={(e) => setValor(e.target.value)}
-        required
       />
+
       <input
         type="date"
         value={data}
         onChange={(e) => setData(e.target.value)}
-        required
       />
+
       <input
         type="text"
         placeholder="Categoria"
         value={categoria}
         onChange={(e) => setCategoria(e.target.value)}
-        required
       />
+
       <select value={tipo} onChange={(e) => setTipo(e.target.value)}>
         <option value="fixa">Fixa</option>
         <option value="variavel">Variável</option>
       </select>
-      <button type="submit">{despesaEditando ? 'Salvar Edição' : 'Salvar'}</button>
+
+      <button type="submit">
+        {despesaEditando ? 'Salvar Alterações' : 'Salvar'}
+      </button>
+
+      <button type="button" onClick={limparEdicao}>
+        Cancelar
+      </button>
     </form>
   );
 }
 
-export default ExpenseForm;
+export default DespesaForm;

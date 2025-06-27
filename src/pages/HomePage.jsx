@@ -10,16 +10,19 @@ function HomePage() {
   const [despesaEditando, setDespesaEditando] = useState(null);
   const [mostrarFormulario, setMostrarFormulario] = useState(false);
 
+  // Carrega despesas do localStorage
   useEffect(() => {
     const dados = carregarDespesas();
     setDespesas(dados);
   }, []);
 
+  // Abrir modal
   const abrirFormulario = () => {
     setDespesaEditando(null);
     setMostrarFormulario(true);
   };
 
+  // Fechar modal
   const fecharFormulario = () => {
     setMostrarFormulario(false);
     setDespesaEditando(null);
@@ -28,20 +31,24 @@ function HomePage() {
   return (
     <div className="home-page">
       {/* TOPO COM TÍTULO E BOTÃO */}
-      <div className="topo">
+      <div className="cabecalho">
         <h1>Controle Financeiro</h1>
         <button className="nova-despesa-btn" onClick={abrirFormulario}>
           + Nova Despesa
         </button>
       </div>
 
-      {/* FORMULÁRIO DE ADIÇÃO/EDIÇÃO */}
+      {/* MODAL COM FORMULÁRIO */}
       {mostrarFormulario && (
-        <DespesaForm
-          onSave={setDespesas}
-          despesaEditando={despesaEditando}
-          limparEdicao={fecharFormulario}
-        />
+        <div className="modal-fundo">
+          <div className="modal-conteudo">
+            <DespesaForm
+              onSave={setDespesas}
+              despesaEditando={despesaEditando}
+              limparEdicao={fecharFormulario}
+            />
+          </div>
+        </div>
       )}
 
       {/* CONTEÚDO PRINCIPAL: LISTA + GRÁFICO */}

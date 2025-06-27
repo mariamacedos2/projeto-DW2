@@ -4,26 +4,18 @@
   padding: 20px;
 }
 
-/* TOPO: TÍTULO + BOTÃO */
-.topo {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
 .nova-despesa-btn {
   background-color: #ff009d;
   color: white;
   padding: 10px 16px;
-  font-size: 16px;
+  font-size: 0.9rem;
   border: none;
   border-radius: 100px;
   cursor: pointer;
 }
 
 .nova-despesa-btn:hover {
-  background-color: #d400ff;
+  background-color: #047400;
 }
 
 /* LAYOUT PRINCIPAL: LISTA + GRÁFICO */
@@ -38,11 +30,44 @@
 }
 
 .grafico {
-  max-height: 250px;
+  max-height: 400px;
   max-width: 280px;
   flex: 1;
   background-color: #fff;
   padding: 16px;
   border-radius: 8px;
   border: 1px solid #ddd;
+}
+
+.modal-fundo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.751); /* fundo escuro */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-conteudo {
+  background-color: #ffc7e5;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 300px;
+  width: 100%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.cabecalho{
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.cabecalho h1{
+  font-size: 2.4rem;
+  margin-bottom: 30px;
+  color: rgb(255, 77, 154);
 }
