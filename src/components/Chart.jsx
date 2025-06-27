@@ -1,12 +1,9 @@
 import { Pie } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import { carregarDespesas } from '../utilarios/localStorage';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-function Chart() {
-  const despesas = carregarDespesas();
-
+function Chart({ despesas }) {
   const totalFixa = despesas
     .filter((d) => d.tipo === 'fixa')
     .reduce((soma, d) => soma + Number(d.valor), 0);
