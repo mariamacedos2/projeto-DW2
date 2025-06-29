@@ -9,36 +9,45 @@ function HomePage() {
   const [despesas, setDespesas] = useState([]);
   const [despesaEditando, setDespesaEditando] = useState(null);
   const [mostrarFormulario, setMostrarFormulario] = useState(false);
+  const [mostrarGrafico, setMostrarGrafico] = useState(false);
 
-  // Carrega despesas do localStorage
   useEffect(() => {
     const dados = carregarDespesas();
     setDespesas(dados);
   }, []);
 
-  // Abrir modal
   const abrirFormulario = () => {
     setDespesaEditando(null);
     setMostrarFormulario(true);
   };
 
-  // Fechar modal
   const fecharFormulario = () => {
     setMostrarFormulario(false);
     setDespesaEditando(null);
   };
 
+  const alternarGrafico = () => {
+    setMostrarGrafico(true);
+  };
+
+  const fecharGrafico = () => {
+    setMostrarGrafico(false);
+  };
+
   return (
     <div className="home-page">
-      {/* TOPO COM TÍTULO E BOTÃO */}
       <div className="cabecalho">
         <h1>Controle Financeiro</h1>
+
         <button className="nova-despesa-btn" onClick={abrirFormulario}>
           + Nova Despesa
         </button>
+
+        <button className="grafico-btn" onClick={alternarGrafico}>
+          Mostrar Gráfico
+        </button>
       </div>
 
-      {/* MODAL COM FORMULÁRIO */}
       {mostrarFormulario && (
         <div className="modal-fundo">
           <div className="modal-conteudo">
@@ -51,7 +60,15 @@ function HomePage() {
         </div>
       )}
 
-      {/* CONTEÚDO PRINCIPAL: LISTA + GRÁFICO */}
+      {mostrarGrafico && (
+        <div className="modal-fundo">
+          <div className="modal-conteudo">
+            <button className="fechar-modal" onClick={fecharGrafico}>×</button>
+            <Chart despesas={despesas} />
+          </div>
+        </div>
+      )}
+
       <div className="conteudo">
         <div className="lista">
           <DespesaList
@@ -62,10 +79,6 @@ function HomePage() {
               setMostrarFormulario(true);
             }}
           />
-        </div>
-
-        <div className="grafico">
-          <Chart despesas={despesas} />
         </div>
       </div>
     </div>
