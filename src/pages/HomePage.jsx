@@ -69,8 +69,8 @@ function HomePage() {
       {mostrarGrafico && (
         <div className="modal-fundo">
           <div className="modal-conteudo">
-            <button className="fechar-modal" onClick={fecharGrafico}>×</button>
             <Chart despesas={despesas} />
+            <button className="fechar-modal" onClick={fecharGrafico}>❌</button>
           </div>
         </div>
       )}

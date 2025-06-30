@@ -4,6 +4,7 @@
   padding: 20px;
 }
 
+/*------------------ Botão +Nova depesa --------------------------------*/
 .nova-despesa-btn {
   background-color: #ff009d;
   color: white;
@@ -18,17 +19,42 @@
   background-color: #047400;
 }
 
-/* LAYOUT PRINCIPAL: LISTA + GRÁFICO */
-.conteudo {
+/*------------------ fundo escuro --------------------------------*/
+.modal-fundo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.844); 
   display: flex;
-  gap: 100px; /* aumentamos o espaço entre eles */
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
 }
 
-.lista {
-  flex: 2;
+.modal-conteudo {
+  background-color: #fff8fd3f;
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 300px;
+  width: 100%;
+  box-shadow: 0 0 20px rgba(255, 210, 243, 0.616);
 }
 
+/*------------------ Cabeçalho --------------------------------*/
+.cabecalho{
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.cabecalho h1{
+  font-size: 2.4rem;
+  margin-bottom: 30px;
+  color: rgb(255, 75, 153);
+}
+
+/*------------------ gráfico conteúdo --------------------------------*/
 .grafico {
   max-height: 400px;
   max-width: 280px;
@@ -39,39 +65,7 @@
   border: 1px solid #ddd;
 }
 
-.modal-fundo {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.844); /* fundo escuro */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
-.modal-conteudo {
-  background-color: #ffc1f261;
-  padding: 10px;
-  border-radius: 10px;
-  max-width: 300px;
-  width: 100%;
-  box-shadow: 0 0 20px rgba(255, 197, 240, 0.26);
-}
-
-.cabecalho{
-  text-align: center;
-  margin-bottom: 50px;
-}
-
-.cabecalho h1{
-  font-size: 2.4rem;
-  margin-bottom: 30px;
-  color: rgb(255, 77, 154);
-}
-
+/*------------------ botão mostrar gráfico --------------------------------*/
 .grafico-btn {
   background-color: #ff009d;
   color: white;
@@ -86,6 +80,7 @@
   background-color: #047400;
 }
 
+/*------------------ imagem --------------------------------*/
 .imagem-cofre{
   width: 220px;
   height: auto;
@@ -93,6 +88,7 @@
   border-radius: 400px;
 }
 
+/*------------------ caixa resumo do mês --------------------------------*/
 .resumo-box{
   background-color: #fff5fa;
   border: 2px solid #ff3ca7;

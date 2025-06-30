@@ -17,15 +17,15 @@ function Chart({ despesas }) {
     datasets: [
       {
         data: [totalFixa, totalVariavel],
-        backgroundColor: ['#00a8ff', '#e84118'],
-        borderColor: ['#dcdde1', '#dcdde1'],
+        backgroundColor: ['#ff009d', '#ffcae5'],
+        borderColor: ['#610030', '#610030'],
         borderWidth: 1,
       },
     ],
   };
 
   return (
-    <div style={{ width: '300px', margin: '0 auto' }}>
+    <div className='grafico'>
       <h2>Gráfico de Despesas</h2>
       <Pie data={data} />
     </div>
