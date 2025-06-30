@@ -74,6 +74,7 @@
   border: none;
   border-radius: 100px;
   cursor: pointer;
+  margin-left: 10px;
 }
 
 .grafico-btn:hover {
@@ -82,7 +83,7 @@
 
 /*------------------ imagem --------------------------------*/
 .imagem-cofre{
-  width: 220px;
+  width: 200px;
   height: auto;
   margin-top: 10px;
   border-radius: 400px;
