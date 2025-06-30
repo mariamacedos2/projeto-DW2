@@ -4,6 +4,8 @@ import DespesaList from '../components/DespesaList';
 import Chart from '../components/Chart';
 import { carregarDespesas } from '../utilarios/localStorage';
 import './HomePage.css';
+import cofreImg from '../assets/cofre.jpeg';
+
 
 function HomePage() {
   const [despesas, setDespesas] = useState([]);
@@ -37,6 +39,7 @@ function HomePage() {
   return (
     <div className="home-page">
       <div className="cabecalho">
+        <img src={cofreImg} alt="cofre" className='imagem-cofre' />
         <h1>Controle Financeiro</h1>
 
         <button className="nova-despesa-btn" onClick={abrirFormulario}>

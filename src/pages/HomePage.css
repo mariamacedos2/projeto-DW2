@@ -53,8 +53,8 @@
 }
 
 .modal-conteudo {
-  background-color: #fffcfc61;
-  padding: 20px;
+  background-color: #ffc1f261;
+  padding: 10px;
   border-radius: 10px;
   max-width: 300px;
   width: 100%;
@@ -84,4 +84,11 @@
 
 .grafico-btn:hover {
   background-color: #047400;
+}
+
+.imagem-cofre{
+  width: 220px;
+  height: auto;
+  margin-top: 10px;
+  border-radius: 400px;
 }
