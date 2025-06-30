@@ -5,6 +5,7 @@ import Chart from '../components/Chart';
 import { carregarDespesas } from '../utilarios/localStorage';
 import './HomePage.css';
 import cofreImg from '../assets/cofre.jpeg';
+import Resumo from '../components/Resumo';
 
 
 function HomePage() {
@@ -41,6 +42,8 @@ function HomePage() {
       <div className="cabecalho">
         <img src={cofreImg} alt="cofre" className='imagem-cofre' />
         <h1>Controle Financeiro</h1>
+
+        <Resumo despesas={despesas}/>
 
         <button className="nova-despesa-btn" onClick={abrirFormulario}>
           + Nova Despesa
