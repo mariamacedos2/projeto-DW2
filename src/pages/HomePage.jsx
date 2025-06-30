@@ -6,6 +6,7 @@ import { carregarDespesas } from '../utilarios/localStorage';
 import './HomePage.css';
 import cofreImg from '../assets/cofre.jpeg';
 import Resumo from '../components/Resumo';
+import ResumoPorCategoria from '../components/ResumoPorCategoria';
 
 
 function HomePage() {
@@ -42,6 +43,8 @@ function HomePage() {
       <div className="cabecalho">
         <img src={cofreImg} alt="cofre" className='imagem-cofre' />
         <h1>Controle Financeiro</h1>
+
+        <ResumoPorCategoria despesas={despesas} />
 
         <Resumo despesas={despesas}/>
 

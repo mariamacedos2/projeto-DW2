@@ -104,3 +104,39 @@
 .resumo-box p{
   margin: 6px 0;
 }
+
+
+/*------------------ caixa resumo do mês --------------------------------*/
+.resumo-categorias {
+  margin-top: 20px;
+  padding: 15px;
+  background: #f7f1ff;
+  border: 1px solid #dcdde1;
+  border-radius: 8px;
+}
+
+.categoria-box {
+  margin-bottom: 10px;
+}
+
+.categoria-header {
+  cursor: pointer;
+  background: #fff;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.detalhes {
+  list-style: none;
+  margin-top: 5px;
+  padding-left: 15px;
+}
+
+.detalhes li {
+  margin-bottom: 4px;
+  font-size: 0.95rem;
+}

@@ -8,7 +8,6 @@ function DespesaForm({ onSave, despesaEditando, limparEdicao }) {
   const [categoria, setCategoria] = useState('');
   const [tipo, setTipo] = useState('fixa');
 
-  // Preenche os campos ao editar
   useEffect(() => {
     if (despesaEditando) {
       setNome(despesaEditando.nome);
@@ -17,7 +16,6 @@ function DespesaForm({ onSave, despesaEditando, limparEdicao }) {
       setCategoria(despesaEditando.categoria);
       setTipo(despesaEditando.tipo);
     } else {
-      // Limpa o formulário ao abrir para nova despesa
       setNome('');
       setValor('');
       setData('');
