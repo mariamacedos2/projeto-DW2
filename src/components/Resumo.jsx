@@ -1,18 +1,35 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 
-function Resumo({ despesas }) {
+export default function Resumo({ despesas }) {
+  const hoje = new Date();
+  const [mostrarFiltro, setMostrarFiltro] = useState(false);
+  const [anoSelecionado, setAnoSelecionado] = useState(hoje.getFullYear());
+  const [mesSelecionado, setMesSelecionado] = useState(
+    String(hoje.getMonth() + 1).padStart(2, '0')
+  );
+
+  const anoMes = `${anoSelecionado}-${mesSelecionado}`;
+
+  const despesasFiltradas = useMemo(() => {
+    return despesas.filter((d) => {
+      const data = new Date(d.data);
+      const ano = data.getFullYear();
+      const mes = String(data.getMonth() + 1).padStart(2, '0');
+      return `${ano}-${mes}` === anoMes;
+    });
+  }, [despesas, anoMes]);
+
   const resumo = useMemo(() => {
-    if (despesas.length === 0) return null;
+    if (despesasFiltradas.length === 0) return null;
 
-    const total = despesas.reduce((acc, item) => acc + Number(item.valor), 0);
+    const total = despesasFiltradas.reduce((acc, item) => acc + Number(item.valor), 0);
 
-    const maior = despesas.reduce((max, item) => {
+    const maior = despesasFiltradas.reduce((max, item) => {
       return Number(item.valor) > Number(max.valor) ? item : max;
-    }, despesas[0]);
+    }, despesasFiltradas[0]);
 
-    // Calcular média diária (considera mês atual)
     const diasUnicos = new Set(
-      despesas.map((d) => new Date(d.data).getDate())
+      despesasFiltradas.map((d) => new Date(d.data).getDate())
     );
     const media = total / diasUnicos.size;
 
@@ -21,19 +38,53 @@ function Resumo({ despesas }) {
       media: isNaN(media) ? 0 : media,
       maior,
     };
-  }, [despesas]);
-
-  if (!resumo) return <p>Nenhuma despesa registrada.</p>;
+  }, [despesasFiltradas]);
 
   return (
     <div className="resumo-box">
-      <p><strong>💰 Total do mês:</strong> R$ {resumo.total.toFixed(2)}</p>
-      <p><strong>📆 Média diária:</strong> R$ {resumo.media.toFixed(2)}</p>
-      <p>
-        <strong>🔥 Maior gasto:</strong> R$ {Number(resumo.maior.valor).toFixed(2)} ({resumo.maior.categoria})
-      </p>
+      <div
+        className="toggle-filtro"
+        onClick={() => setMostrarFiltro(!mostrarFiltro)}
+      >
+        📅 Escolha o mês {mostrarFiltro ? '▲' : '▼'}
+      </div>
+
+      {mostrarFiltro && (
+        <div className="filtro-mes-separado">
+          <input
+            type="number"
+            className="input-mes-custom"
+            value={mesSelecionado}
+            onChange={(e) => {
+              const val = e.target.value.padStart(2, '0');
+              if (val >= 1 && val <= 12) setMesSelecionado(val);
+            }}
+            placeholder="MM"
+            min="1"
+            max="12"
+          />
+          <span className="barra-separadora">/</span>
+          <input
+            type="number"
+            className="input-ano-custom"
+            value={anoSelecionado}
+            onChange={(e) => setAnoSelecionado(e.target.value)}
+            placeholder="AAAA"
+            min="2000"
+            max="2100"
+          />
+        </div>
+      )}
+
+      {resumo ? (
+        <div className="resumo-info">
+          <p><strong>💰 Total do mês:</strong> R$ {resumo.total.toFixed(2)}</p>
+          <p><strong>📆 Média diária:</strong> R$ {resumo.media.toFixed(2)}</p>
+          <p><strong>🔥 Maior gasto:</strong> R$ {Number(resumo.maior.valor).toFixed(2)} ({resumo.maior.categoria})</p>
+        </div>
+      ) : (
+        <p>Nenhuma despesa registrada para este mês.</p>
+      )}
     </div>
   );
 }
-
-export default Resumo;
