@@ -92,9 +92,6 @@ function DespesaForm({ onSave, despesaEditando, limparEdicao }) {
         {despesaEditando ? 'Salvar Alterações' : 'Salvar'}
       </button>
 
-      <button type="button" onClick={limparEdicao}>
-        Cancelar
-      </button>
     </form>
   );
 }

@@ -49,12 +49,11 @@ form button {
 
 form button {
   display: inline-block;
-  margin: 3px;
-  width: 80px;
+  margin: 16px;
   background-color:#ff009d;
   color: white;
   border: none;
-  border-radius: 15px;
+  border-radius: 50px;
   cursor: pointer;
   transition: background-color 0.2s;
 }

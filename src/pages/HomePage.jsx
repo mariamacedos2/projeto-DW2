@@ -64,6 +64,7 @@ function HomePage() {
 
       {mostrarFormulario && (
         <div className="modal-fundo">
+          <button className="btn-fechar" onClick={fecharFormulario}>Sair</button>
           <div className="modal-conteudo">
             <DespesaForm
               onSave={setDespesas}
