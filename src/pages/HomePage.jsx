@@ -14,6 +14,7 @@ function HomePage() {
   const [despesaEditando, setDespesaEditando] = useState(null);
   const [mostrarFormulario, setMostrarFormulario] = useState(false);
   const [mostrarGrafico, setMostrarGrafico] = useState(false);
+  const [mostrarModalDespesas, setMostrarModalDespesas] = useState(false);
 
   useEffect(() => {
     const dados = carregarDespesas();
@@ -55,6 +56,10 @@ function HomePage() {
         <button className="grafico-btn" onClick={alternarGrafico}>
           Mostrar Gráfico
         </button>
+
+        <button onClick={() => setMostrarModalDespesas(true)} className="btn-ver-despesas">
+          Mostrar Despesas
+        </button>
       </div>
 
       {mostrarFormulario && (
@@ -71,26 +76,35 @@ function HomePage() {
 
       {mostrarGrafico && (
         <div className="modal-fundo">
+          <button className="btn-fechar" onClick={fecharGrafico}>Sair</button>
           <div className="modal-conteudo">
             <Chart despesas={despesas} />
-            <button className="fechar-modal" onClick={fecharGrafico}>❌</button>
           </div>
         </div>
       )}
 
-      <div className="conteudo">
-        <div className="lista">
-          <DespesaList
-            despesas={despesas}
-            setDespesas={setDespesas}
-            editarDespesa={(d) => {
-              setDespesaEditando(d);
-              setMostrarFormulario(true);
-            }}
-          />
-        </div>
+      {mostrarModalDespesas && (
+          <div className="modal-fundo">
+            <button onClick={() => setMostrarModalDespesas(false)}
+                className="btn-fechar"> Sair </button>
+            <div className="modal-despesas">
+
+              <DespesaList
+                despesas={despesas}
+                setDespesas={setDespesas}
+                editarDespesa={(d) => {
+                  setDespesaEditando(d);
+                  setMostrarFormulario(true);
+                  setMostrarModalDespesas(false); // fecha modal ao editar
+                }}
+              />
+              <button onClick={() => setMostrarModalDespesas(false)}
+                className="btn-fechar"> Sair </button>
+              
+            </div>
+          </div>
+        )}
       </div>
-    </div>
   );
 }
 

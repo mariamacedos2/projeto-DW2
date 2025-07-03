@@ -78,9 +78,9 @@ export default function Resumo({ despesas }) {
 
       {resumo ? (
         <div className="resumo-info">
-          <p><strong>💰 Total do mês:</strong> R$ {resumo.total.toFixed(2)}</p>
-          <p><strong>📆 Média diária:</strong> R$ {resumo.media.toFixed(2)}</p>
-          <p><strong>🔥 Maior gasto:</strong> R$ {Number(resumo.maior.valor).toFixed(2)} ({resumo.maior.categoria})</p>
+          <p><strong>• Total do mês:</strong> R$ {resumo.total.toFixed(2)}</p>
+          <p><strong>• Média diária:</strong> R$ {resumo.media.toFixed(2)}</p>
+          <p><strong>• Maior gasto:</strong> R$ {Number(resumo.maior.valor).toFixed(2)} ({resumo.maior.categoria})</p>
         </div>
       ) : (
         <p>Nenhuma despesa registrada para este mês.</p>

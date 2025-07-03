@@ -1,36 +1,46 @@
 import { useState } from 'react';
 
+// Função para deixar a primeira letra maiúscula
+function formatarCategoria(texto) {
+  const t = texto.toLowerCase();
+  return t.charAt(0).toUpperCase() + t.slice(1);
+}
+
 function ResumoPorCategoria({ despesas }) {
   const categorias = {};
 
-  // Agrupar por categoria
+  // Agrupar despesas com base em categoria normalizada (minúscula)
   despesas.forEach((d) => {
-    if (!categorias[d.categoria]) {
-      categorias[d.categoria] = {
+    const cat = d.categoria.toLowerCase(); // 🔹 normaliza
+
+    if (!categorias[cat]) {
+      categorias[cat] = {
+        nomeFormatado: formatarCategoria(cat), // salva a versão bonitinha
         total: 0,
         itens: [],
       };
     }
-    categorias[d.categoria].total += Number(d.valor);
-    categorias[d.categoria].itens.push(d);
+
+    categorias[cat].total += Number(d.valor);
+    categorias[cat].itens.push(d);
   });
 
-  const [aberta, setAberta] = useState(null); // controla qual está expandida
+  const [aberta, setAberta] = useState(null);
 
   return (
     <div className="resumo-categorias">
       <h3>Resumo por Categoria</h3>
-      {Object.entries(categorias).map(([categoria, dados]) => (
-        <div key={categoria} className="categoria-box">
+      {Object.entries(categorias).map(([chave, dados]) => (
+        <div key={chave} className="categoria-box">
           <div
             className="categoria-header"
-            onClick={() => setAberta(aberta === categoria ? null : categoria)}
+            onClick={() => setAberta(aberta === chave ? null : chave)}
           >
-            <strong>{categoria}</strong>: R$ {dados.total.toFixed(2)}
-            <span className="toggle">{aberta === categoria ? '▲' : '▼'}</span>
+            <strong>{dados.nomeFormatado}</strong>: R$ {dados.total.toFixed(2)}
+            <span className="toggle">{aberta === chave ? '▲' : '▼'}</span>
           </div>
 
-          {aberta === categoria && (
+          {aberta === chave && (
             <ul className="detalhes">
               {dados.itens.map((item, i) => (
                 <li key={i}>

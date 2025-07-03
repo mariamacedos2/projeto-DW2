@@ -1,9 +1,3 @@
-.home-page {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
 /*------------------ Botão +Nova depesa --------------------------------*/
 .nova-despesa-btn {
   background-color: #ff009d;
@@ -34,12 +28,10 @@
 }
 
 .modal-conteudo {
-  background-color: #fff8fd3f;
   padding: 10px;
   border-radius: 10px;
   max-width: 300px;
-  width: 100%;
-  box-shadow: 0 0 20px rgba(255, 210, 243, 0.616);
+  width: 100%;;
 }
 
 /*------------------ Cabeçalho --------------------------------*/
@@ -91,7 +83,7 @@
 
 /*------------------ caixa resumo do mês --------------------------------*/
 .resumo-box{
-  background-color: #fff5fa;
+  background-color: #ffffff;
   border: 2px solid #ff3ca7;
   border-radius: 10px;
   padding: 10px;
@@ -105,8 +97,7 @@
   margin: 6px 0;
 }
 
-
-/*------------------ caixa resumo do mês --------------------------------*/
+/*------------------ caixa resumo por categoria --------------------------------*/
 .resumo-categorias {
   
   background-color: #ffffff;
@@ -124,7 +115,6 @@
 }
 
 .categoria-header {
-  
   background-color: #ffffff;
   border: 2px solid #ff3ca7;
   border-radius: 10px;
@@ -141,8 +131,52 @@
   margin-top: 5px;
   padding-left: 15px;
 }
-
 .detalhes li {
   margin-bottom: 4px;
-  font-size: 0.95rem;
+  font-size: 1rem;
+  color: black;
+}
+
+/*------------------ Caixa Mostrar Despesas --------------------------------*/
+.modal-despesas {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  width: 280px;
+  max-width: 600px;
+  max-height: 80vh;
+  overflow-y: auto;
+  text-align: center;
+}
+
+.btn-fechar {
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  margin-top: 20px;
+  background-color:transparent;
+  color: white;
+  padding: 10px 16px;
+  font-size: 0.9rem;
+  border: 2px solid rgb(255, 84, 155);
+  border-radius: 100px;
+  cursor: pointer;
+}
+.btn-fechar:hover{
+  background-color: #03630067;
+}
+
+.btn-ver-despesas {
+  margin-top: 15px;
+  margin-bottom: 20px;
+  padding: 10px 16px;
+  font-size: 0.9rem;
+  background-color: #ff009d;
+  color: white;
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+}
+.btn-ver-despesas:hover{
+  background-color: #047400;
 }

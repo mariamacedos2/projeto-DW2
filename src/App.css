@@ -66,12 +66,12 @@ form button:hover {
 
 /*------------------Caixa despesa --------------------------------*/
 div.expense-item {
+  
   background-color: #ffffff;
   border: 2px solid #ff3ca7;
   border-radius: 6px;
   padding: 15px;
   margin-bottom: 15px;
-  width: 300px;
 }
 
 div.expense-item p {

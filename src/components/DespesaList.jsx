@@ -3,7 +3,7 @@ import DespesaItem from './DespesaItem';
 function DespesaList({ despesas, setDespesas, editarDespesa }) {
   return (
     <div>
-      <h2>Despesas</h2>
+      <h2>Despesas Cadastradas</h2>
       {despesas.length === 0 ? (
         <p>Nenhuma despesa cadastrada.</p>
       ) : (
