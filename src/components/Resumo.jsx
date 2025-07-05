@@ -1,5 +1,11 @@
 import { useMemo, useState } from 'react';
 
+// Função para deixar a primeira letra maiúscula
+function capitalizar(texto) {
+  if (!texto) return '';
+  return texto.charAt(0).toUpperCase() + texto.slice(1).toLowerCase();
+}
+
 export default function Resumo({ despesas }) {
   const hoje = new Date();
   const [mostrarFiltro, setMostrarFiltro] = useState(false);
@@ -12,9 +18,7 @@ export default function Resumo({ despesas }) {
 
   const despesasFiltradas = useMemo(() => {
     return despesas.filter((d) => {
-      const data = new Date(d.data);
-      const ano = data.getFullYear();
-      const mes = String(data.getMonth() + 1).padStart(2, '0');
+      const [ano, mes] = d.data.split('-');
       return `${ano}-${mes}` === anoMes;
     });
   }, [despesas, anoMes]);
@@ -80,7 +84,10 @@ export default function Resumo({ despesas }) {
         <div className="resumo-info">
           <p><strong>• Total do mês:</strong> R$ {resumo.total.toFixed(2)}</p>
           <p><strong>• Média diária:</strong> R$ {resumo.media.toFixed(2)}</p>
-          <p><strong>• Maior gasto:</strong> R$ {Number(resumo.maior.valor).toFixed(2)} ({resumo.maior.categoria})</p>
+          <p>
+            <strong>• Maior gasto:</strong> R$ {Number(resumo.maior.valor).toFixed(2)} (
+            {capitalizar(resumo.maior.categoria)})
+          </p>
         </div>
       ) : (
         <p>Nenhuma despesa registrada para este mês.</p>

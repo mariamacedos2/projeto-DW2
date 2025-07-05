@@ -59,7 +59,8 @@ form button {
 }
 
 form button:hover {
-  background-color: #047400;
+  background-color: white;
+  color: #ff009d;
 }
 
 
@@ -90,7 +91,9 @@ div.expense-item button {
 }
 
 div.expense-item button:hover {
-  background-color: #047400;
+  background-color: white;
+  color: #ff009d;
+  border: 1px solid #ff009d;
 }
 .botao-seletor {
   background: transparent;

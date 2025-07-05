@@ -10,7 +10,9 @@
 }
 
 .nova-despesa-btn:hover {
-  background-color: #047400;
+  background-color: white;
+  color: #ff009d;
+  border: 2px solid #ff009d;
 }
 
 /*------------------ fundo escuro --------------------------------*/
@@ -70,7 +72,9 @@
 }
 
 .grafico-btn:hover {
-  background-color: #047400;
+  background-color: white;
+  color: #ff009d;
+  border: 2px solid #ff009d;
 }
 
 /*------------------ imagem --------------------------------*/
@@ -163,20 +167,24 @@
   cursor: pointer;
 }
 .btn-fechar:hover{
-  background-color: #03630067;
+  background-color: white;
+  color: #ff009d;
+  border: 2px solid #ff009d;
 }
 
 .btn-ver-despesas {
   margin-top: 15px;
   margin-bottom: 20px;
-  padding: 10px 16px;
-  font-size: 0.9rem;
-  background-color: #ff009d;
-  color: white;
-  border: none;
+  padding: 20px 30px;
+  font-size: 1.5rem;
+  background-color: white;
+  color: #ff009d;
+  border: 3px solid #ff009d;
   border-radius: 100px;
   cursor: pointer;
+  font-weight: bold;
 }
 .btn-ver-despesas:hover{
-  background-color: #047400;
+  background-color: #ff009d;
+  color: white;
 }
