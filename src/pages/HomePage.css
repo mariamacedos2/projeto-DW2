@@ -87,7 +87,7 @@
 
 /*------------------ caixa resumo do mês --------------------------------*/
 .resumo-box{
-  background-color: #ffffff;
+  background-color: #fff0f6af;
   border: 2px solid #ff3ca7;
   border-radius: 10px;
   padding: 10px;
@@ -104,7 +104,7 @@
 /*------------------ caixa resumo por categoria --------------------------------*/
 .resumo-categorias {
   
-  background-color: #ffffff;
+  background-color: #fff7faaf;
   border: 2px solid #ff3ca7;
   border-radius: 10px;
   padding: 10px;
@@ -175,8 +175,8 @@
 .btn-ver-despesas {
   margin-top: 15px;
   margin-bottom: 20px;
-  padding: 20px 30px;
-  font-size: 1.5rem;
+  padding: 15px 20px;
+  font-size: 1rem;
   background-color: white;
   color: #ff009d;
   border: 3px solid #ff009d;
