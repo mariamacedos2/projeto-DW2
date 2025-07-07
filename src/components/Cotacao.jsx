@@ -19,8 +19,8 @@ const Cotacao = () => {
       <h3>Cotação Atual</h3>
       {dolar && euro ? (
         <>
-          <p>💵 Dólar: R$ {parseFloat(dolar).toFixed(2)}</p>
-          <p>💶 Euro: R$ {parseFloat(euro).toFixed(2)}</p>
+          <p>💵 Dólar: US$ {parseFloat(dolar).toFixed(2)}</p>
+          <p>💶 Euro: € {parseFloat(euro).toFixed(2)}</p>
         </>
       ) : (
         <p>Carregando cotações...</p>
