@@ -1,10 +1,10 @@
 import { useState } from 'react';
 
-// Função para deixar a primeira letra maiúscula
+//Deixa a primeira letra maiúscula
 function formatarCategoria(texto) {
   const t = texto.toLowerCase();
   return t.charAt(0).toUpperCase() + t.slice(1);
-}
+}  
 
 function ResumoPorCategoria({ despesas }) {
   const categorias = {};

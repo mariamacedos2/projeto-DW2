@@ -1,6 +1,7 @@
 import { Pie } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 
+/* Ativa os recursos importados dentro do Chart.js. Sem isso, o gráfico não renderizaria corretamente.*/
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 function Chart({ despesas }) {
