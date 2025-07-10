@@ -15,7 +15,7 @@ const Cotacao = () => {
   }, []);
 
   return (
-    <div style={{ marginTop: '300px', textAlign: 'center' }}>
+    <div style={{ marginTop: '50px', textAlign: 'center' }}>
       <h2>Cotação Atual</h2>
       {dolar && euro ? (
         <>

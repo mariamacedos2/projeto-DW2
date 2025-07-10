@@ -26,8 +26,8 @@ function Chart({ despesas }) {
         label: 'Despesas por Categoria',
         data: valores,
         backgroundColor: [
-          '#3498db', '#e74c3c', '#f1c40f',
-          '#2ecc71', '#9b59b6', '#34495e',
+          '#ff009d', '#6d0043', '#ffb9e1',
+          '#cb7dc8', '#7cfffb', '#34495e',
           '#fd79a8', '#00cec9'
         ],
         borderColor: '#fff',
