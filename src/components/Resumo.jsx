@@ -9,6 +9,7 @@ function capitalizar(texto) {
 export default function Resumo({ despesas }) {
   const hoje = new Date();
   const [mostrarFiltro, setMostrarFiltro] = useState(false);
+  const [mostrarDetalhes, setMostrarDetalhes] = useState(false);
   const [anoSelecionado, setAnoSelecionado] = useState(hoje.getFullYear());
   const [mesSelecionado, setMesSelecionado] = useState(
     String(hoje.getMonth() + 1).padStart(2, '0')
@@ -88,6 +89,25 @@ export default function Resumo({ despesas }) {
             <strong>• Maior gasto:</strong> R$ {Number(resumo.maior.valor).toFixed(2)} (
             {capitalizar(resumo.maior.categoria)})
           </p>
+
+          {/* Botão para expandir detalhes */}
+          <p
+            onClick={() => setMostrarDetalhes(!mostrarDetalhes)}
+            style={{ cursor: 'pointer', marginTop: '10px', color: 'rgb(255, 75, 153)' }}
+          >
+            {mostrarDetalhes ? '▲ Ocultar detalhes' : '▼ Ver detalhes do mês'}
+          </p>
+
+          {/* Lista de detalhes */}
+          {mostrarDetalhes && (
+            <ul style={{ paddingLeft: '15px', marginTop: '10px' }}>
+              {despesasFiltradas.map((d) => (
+                <li key={d.id}>
+                  {d.nome} — R$ {Number(d.valor).toFixed(2)} | {d.data}
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       ) : (
         <p>Nenhuma despesa registrada para este mês.</p>
