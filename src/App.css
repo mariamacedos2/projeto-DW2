@@ -6,7 +6,7 @@
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #ffffffd2;
+  background-color: #fff6fbe8;
   margin: 0;
   padding: 0;
 }
@@ -17,7 +17,7 @@ body {
   padding: 20px;
 }
 
-h2{
+h1, h2{
   color: rgb(255, 75, 153);
 }
 

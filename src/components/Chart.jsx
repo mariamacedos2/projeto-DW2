@@ -1,6 +1,8 @@
 import { Pie } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 
+ChartJS.register(ArcElement, Tooltip, Legend);
+
 function Chart({ despesas }) {
   // Agrupar por categoria (case-insensitive)
   const despesasPorCategoria = despesas.reduce((total, despesa) => {

@@ -3,11 +3,12 @@ import DespesaForm from '../components/DespesaForm';
 import DespesaList from '../components/DespesaList';
 import Chart from '../components/Chart';
 import { carregarDespesas } from '../utilarios/localStorage';
-import './HomePage.css';
-import cofreImg from '../assets/cofre.jpeg';
+import cofreImg from '../assets/cofre.img.png';
 import Resumo from '../components/Resumo';
 import ResumoPorCategoria from '../components/ResumoPorCategoria';
 import Cotacao from '../components/Cotacao';
+import Sidebar from '../components/Sidebar';
+import './HomePage.css';
 
 
 function HomePage() {
@@ -16,6 +17,7 @@ function HomePage() {
   const [mostrarFormulario, setMostrarFormulario] = useState(false);
   const [mostrarGrafico, setMostrarGrafico] = useState(false);
   const [mostrarModalDespesas, setMostrarModalDespesas] = useState(false);
+  const [mostrarSidebar, setMostrarSidebar] = useState(true);
 
   useEffect(() => {
     const dados = carregarDespesas();
@@ -32,52 +34,45 @@ function HomePage() {
     setDespesaEditando(null);
   };
 
-  const alternarGrafico = () => {
-    setMostrarGrafico(true);
-  };
+  const abrirGrafico = () => setMostrarGrafico(true);
+  const fecharGrafico = () => setMostrarGrafico(false);
 
-  const fecharGrafico = () => {
-    setMostrarGrafico(false);
-  };
+  const abrirDespesas = () => setMostrarModalDespesas(true);
+  const fecharDespesas = () => setMostrarModalDespesas(false);
+
+  const toggleSidebar = () => setMostrarSidebar(!mostrarSidebar);
+
 
   return (
-    <div className="home-page">
-      <div className="cabecalho">
-        <img src={cofreImg} alt="cofre" className="imagem-cofre" />
-        <h1>Controle Financeiro</h1>
+   
+    <div className="home-container">
+      {/* Sidebar Condicional */}
+      {mostrarSidebar && (
+        <Sidebar
+          onNova={abrirFormulario}
+          onGrafico={abrirGrafico}
+          onDespesas={abrirDespesas}
+          onToggleSidebar={toggleSidebar}
+        />
+      )}
 
-        <Cotacao />
-
-        {/* 🔼 Botão de Mostrar Despesas em cima */}
-        <div className="botao-superior">
-          <button
-            onClick={() => setMostrarModalDespesas(true)}
-            className="btn-ver-despesas grande"
-          >
-            Mostrar Despesas
-          </button>
-        </div>
-
-        {/* Resumos */}
+      {/* Botão para mostrar o menu, visível apenas quando oculto */}
+      {!mostrarSidebar && (
+        
+        <button className="btn-ocultar" onClick={toggleSidebar}>
+          ☰ Menu
+        </button>
+        
+      )}
+    
+      <main className="conteudo-principal">
+         <h1>Controle Financeiro</h1>
         <ResumoPorCategoria despesas={despesas} />
         <Resumo despesas={despesas} />
+      </main>
 
-        {/* 🔽 Botões embaixo */}
-        <div className="botoes-inferiores">
-          <button className="nova-despesa-btn" onClick={abrirFormulario}>
-            + Nova Despesa
-          </button>
-
-          <button className="grafico-btn" onClick={alternarGrafico}>
-            Mostrar Gráfico
-          </button>
-        </div>
-      </div>
-
-      {/* Modal de formulário */}
       {mostrarFormulario && (
         <div className="modal-fundo">
-          <button className="btn-fechar" onClick={fecharFormulario}>Sair</button>
           <div className="modal-conteudo">
             <DespesaForm
               onSave={setDespesas}
@@ -85,23 +80,21 @@ function HomePage() {
               limparEdicao={fecharFormulario}
             />
           </div>
+          <button className="btn-fechar" onClick={fecharFormulario}>Sair</button>
         </div>
       )}
 
-      {/* Modal do gráfico */}
       {mostrarGrafico && (
         <div className="modal-fundo">
-          <button className="btn-fechar" onClick={fecharGrafico}>Sair</button>
           <div className="modal-conteudo">
             <Chart despesas={despesas} />
           </div>
+          <button className="btn-fechar" onClick={fecharGrafico}>Sair</button>
         </div>
       )}
 
-      {/* Modal de lista de despesas */}
       {mostrarModalDespesas && (
         <div className="modal-fundo">
-          <button onClick={() => setMostrarModalDespesas(false)} className="btn-fechar">Sair</button>
           <div className="modal-despesas">
             <DespesaList
               despesas={despesas}
@@ -109,11 +102,11 @@ function HomePage() {
               editarDespesa={(d) => {
                 setDespesaEditando(d);
                 setMostrarFormulario(true);
-                setMostrarModalDespesas(false);
+                fecharDespesas();
               }}
             />
-            <button onClick={() => setMostrarModalDespesas(false)} className="btn-fechar">Sair</button>
           </div>
+          <button className="btn-fechar" onClick={fecharDespesas}>Sair</button>
         </div>
       )}
     </div>
