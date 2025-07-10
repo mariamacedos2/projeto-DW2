@@ -1,26 +1,35 @@
 import { Pie } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 
-/* Ativa os recursos importados dentro do Chart.js. Sem isso, o gráfico não renderizaria corretamente.*/
-ChartJS.register(ArcElement, Tooltip, Legend);
-
 function Chart({ despesas }) {
-  const totalFixa = despesas
-    .filter((d) => d.tipo === 'fixa')
-    .reduce((soma, d) => soma + Number(d.valor), 0);
+  // Agrupar por categoria (case-insensitive)
+  const despesasPorCategoria = despesas.reduce((total, despesa) => {
+    const categoria = despesa.categoria.trim().toLowerCase();
+    if (!total[categoria]) {
+      total[categoria] = 0;
+    }
+    total[categoria] += parseFloat(despesa.valor);
+    return total;
+  }, {});
 
-  const totalVariavel = despesas
-    .filter((d) => d.tipo === 'variavel')
-    .reduce((soma, d) => soma + Number(d.valor), 0);
+  const labels = Object.keys(despesasPorCategoria).map((cat) =>
+    cat.charAt(0).toUpperCase() + cat.slice(1)
+  );
+  const valores = Object.values(despesasPorCategoria);
 
   const data = {
-    labels: ['Fixa', 'Variável'],
+    labels,
     datasets: [
       {
-        data: [totalFixa, totalVariavel],
-        backgroundColor: ['#ff009d', '#ffcae5'],
-        borderColor: ['#610030', '#610030'],
-        borderWidth: 1,
+        label: 'Despesas por Categoria',
+        data: valores,
+        backgroundColor: [
+          '#3498db', '#e74c3c', '#f1c40f',
+          '#2ecc71', '#9b59b6', '#34495e',
+          '#fd79a8', '#00cec9'
+        ],
+        borderColor: '#fff',
+        borderWidth: 2,
       },
     ],
   };
