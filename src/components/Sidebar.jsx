@@ -1,4 +1,3 @@
-
 import cofreImg from '../assets/cofre.img.png';
 import Cotacao from './Cotacao';
 

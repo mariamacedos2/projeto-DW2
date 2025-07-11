@@ -42,18 +42,6 @@
   width: 100%;;
 }
 
-/*------------------ Cabeçalho --------------------------------*/
-.cabecalho{
-  text-align: center;
-  margin-bottom: 50px;
-}
-
-.cabecalho h1{
-  font-size: 2.4rem;
-  margin-bottom: 30px;
-  color: rgb(255, 75, 153);
-}
-
 /*------------------ gráfico conteúdo --------------------------------*/
 .grafico {
   max-height: 400px;
@@ -180,7 +168,7 @@
 .btn-fechar:hover{
   background-color: white;
   color: #ff009d;
-  border: 2px solid #7cfffb;
+  border: 2px solid #cb7dc8;
 }
 
 .btn-ver-despesas {
@@ -203,7 +191,6 @@
   background-color: #ff009d;
   color: white;
 }
-
 
 /*-----------*/
 .home-container {
@@ -245,7 +232,6 @@
   overflow-y: auto;
   background-color: #fddbe9;
   border-radius: 10%;
-
 }
 
 /* ---------*/
@@ -264,22 +250,3 @@
 .btn-ocultar:hover {
   color: #000;
 }
-
-.btn-menu{
-  position: fixed;
-  margin-top: 20px;
-  top: 0;
-  left: 0;
-  background-Color: #ff009d;
-  color: white;
-  border-radius: 50px;
-  padding: 10px 16px;
-  border: none;
-  z-Index: 1000;
-  cursor: pointer;
-}
-.btn-menu:hover{
-  color: #000;
-}
-
-
