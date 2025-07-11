@@ -4,7 +4,8 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 function Chart({ despesas }) {
-  // Agrupar por categoria (case-insensitive)
+
+  //Agrupa despesas por categoria
   const despesasPorCategoria = despesas.reduce((total, despesa) => {
     const categoria = despesa.categoria.trim().toLowerCase();
     if (!total[categoria]) {
@@ -14,11 +15,13 @@ function Chart({ despesas }) {
     return total;
   }, {});
 
+  //Cria os rótulos e valores para o gráfico
   const labels = Object.keys(despesasPorCategoria).map((cat) =>
     cat.charAt(0).toUpperCase() + cat.slice(1)
   );
   const valores = Object.values(despesasPorCategoria);
 
+  //configurando o gráfico
   const data = {
     labels,
     datasets: [

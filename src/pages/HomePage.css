@@ -1,17 +1,17 @@
 /*------------------ Botão +Nova depesa --------------------------------*/
 .nova-despesa-btn {
-  margin-top: 20px;
+  margin-top: 30px;
   margin-bottom: 15px;
   padding: 10px 20px;
   font-size: 1rem;
   background-color: white;
   color: #ff009d;
-  border: 3px solid #ff009d;
+  border: 2px solid #ff009d;
   border-radius: 100px;
   cursor: pointer;
   font-weight: bold;
   margin-left: 10px;
-  width: 100%;
+  width: 80%;
   margin: 8px 0;
   transition: 0.2s;
 }
@@ -55,18 +55,18 @@
 
 /*------------------ botão mostrar gráfico --------------------------------*/
 .grafico-btn {
-  margin-top: 15px;
+  margin-top: 20px;
   margin-bottom: 15px;
   padding: 10px 20px;
   font-size: 1rem;
   background-color: white;
   color: #ff009d;
-  border: 3px solid #ff009d;
+  border: 2px solid #ff009d;
   border-radius: 100px;
   cursor: pointer;
   font-weight: bold;
   margin-left: 10px;
-  width: 100%;
+  width: 80%;
   margin: 8px 0;
   transition: 0.2s;
 }
@@ -172,21 +172,22 @@
 }
 
 .btn-ver-despesas {
-  margin-top: 15px;
+   margin-top: 20px;
   margin-bottom: 15px;
   padding: 10px 20px;
   font-size: 1rem;
   background-color: white;
   color: #ff009d;
-  border: 3px solid #ff009d;
+  border: 2px solid #ff009d;
   border-radius: 100px;
   cursor: pointer;
   font-weight: bold;
   margin-left: 10px;
-  width: 100%;
+  width: 80%;
   margin: 8px 0;
   transition: 0.2s;
 }
+
 .btn-ver-despesas:hover{
   background-color: #ff009d;
   color: white;
@@ -217,6 +218,7 @@
   box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
   z-index: 1000;
   align-items: center;
+  border: 1px solid #ffffff;
 }
 
 .sidebar-img {
